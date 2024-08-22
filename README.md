@@ -1,4 +1,6 @@
 # InfoFusion
+This project is available in multiple languages:
+- [简体中文](./README.zh-CN.md)
 
 **InfoFusion** is a 100% locally run AI-powered web tool designed to read WeChat chat data from the user's computer and generate intelligent auto-replies using the `RWKV runner`. The project integrates with the open-source tool `pywxdump` to efficiently extract and process WeChat data. Built with Next.js and NextUI, InfoFusion provides a modern, responsive, and user-friendly interface, ensuring privacy and control over your data.
 
