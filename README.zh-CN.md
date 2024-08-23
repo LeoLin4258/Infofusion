@@ -13,6 +13,13 @@ This project is available in multiple languages:
 - **现代化 UI：** 基于 NextUI 构建，提供简洁、响应式的界面，提升用户体验。
 - **TypeScript 支持：** 提供强类型支持，提升开发体验，确保代码的可维护性。
 
+## 计划添加的功能
+
+- [ ] 支持自定义回复风格
+- [ ] 新消息UI提醒
+- [ ] 未读消息总结
+
+
 ## 使用技术
 
 InfoFusion 采用以下技术构建：
