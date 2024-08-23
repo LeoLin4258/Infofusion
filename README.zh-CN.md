@@ -40,8 +40,8 @@ InfoFusion 采用以下技术构建：
    首先将 InfoFusion 仓库克隆到你的本地机器：
 
    ```bash
-   git clone https://github.com/LeoLin4258/RWKV-InfoFusion
-   cd RWKV-InfoFusion
+   git clone https://github.com/LeoLin4258/InfoFusion
+   cd InfoFusion
    ```
 
 2. **安装依赖**
