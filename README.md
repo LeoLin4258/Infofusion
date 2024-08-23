@@ -40,7 +40,7 @@ Before starting, please ensure that `RWKV-Runner` and `PyWxDump` are correctly i
 
    ```bash
    git clone https://github.com/LeoLin4258/Infofusion
-   cd RWKV-InfoFusion
+   cd InfoFusion
    ```
 
 2. **Install Dependencies**
