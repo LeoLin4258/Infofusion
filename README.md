@@ -39,7 +39,7 @@ Before starting, please ensure that `RWKV-Runner` and `PyWxDump` are correctly i
    Begin by cloning the InfoFusion repository to your local machine:
 
    ```bash
-   git clone https://github.com/LeoLin4258/RWKV-InfoFusion
+   git clone https://github.com/LeoLin4258/Infofusion
    cd RWKV-InfoFusion
    ```
 
