@@ -12,6 +12,12 @@ This project is available in multiple languages:
 - **Modern UI:** Built with NextUI, offering a sleek, responsive interface for an enhanced user experience.
 - **TypeScript Support:** Provides strong typing to improve the development experience and ensure better code maintainability.
 
+ ## Planned Features
+
+- [ ] Customizable reply styles
+- [ ] UI notifications for new messages
+- [ ] Summary of unread messages
+
 ## Technologies Used
 
 InfoFusion is powered by the following technologies:
