@@ -5,6 +5,7 @@ This project is available in multiple languages:
 
 **InfoFusion** 是一个完全本地运行的 AI 驱动的网页工具，旨在从用户的计算机读取微信聊天数据，并使用 `RWKV runner` 生成智能自动回复。该项目集成了开源工具 `pywxdump`，以高效提取和处理微信数据。InfoFusion 基于 Next.js 和 NextUI 构建，提供现代化、响应式且用户友好的界面，确保您的数据隐私和控制权。
 
+![a52a4877b12b9e4402ec94d0540f6b3](https://github.com/user-attachments/assets/52a38399-a80c-4494-8fd1-6341d9ec7293)
 ## 功能特性
 
 - **本地数据处理：** 完全在用户计算机上运行，确保用户隐私，无需将数据发送到外部服务器。
