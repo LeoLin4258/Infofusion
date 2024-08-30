@@ -88,6 +88,10 @@ InfoFusion can be deployed to any platform that supports Node.js applications, s
 
 Vercel provides seamless deployment for Next.js applications:
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LeoLin4258/Infofusion.git)
+
+or
+
 1. Push your repository to GitHub.
 2. Connect your repository to Vercel.
 3. Vercel will automatically build and deploy your application.
