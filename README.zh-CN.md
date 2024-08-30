@@ -88,6 +88,12 @@ InfoFusion 可以部署到任何支持 Node.js 应用的平台，例如 Vercel�
 
 Vercel 提供无缝的 Next.js 应用部署：
 
+> 大陆地区可能无法访问你在Vercel部署的页面
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/LeoLin4258/Infofusion.git)
+
+或者
+
 1. 将你的仓库推送到 GitHub。
 2. 将你的仓库连接到 Vercel。
 3. Vercel 会自动构建并部署你的应用。
