@@ -29,7 +29,7 @@ interface Message {
     MsgSvrID: string;
     content: {
         msg: string;
-        aiRes?: string
+        aiRes?: string[]
         src: string;
         promote?: string;
     };
@@ -41,7 +41,7 @@ interface Message {
 }
 
 interface MsgItemProps {
-    aiRes?: string
+    aiRes?: string[]
     msg: Message; // Array of Contact objects
     senderInfo: ApiResUserInfo | undefined;
     receiverInfo: ApiResUserInfo | undefined;
@@ -96,7 +96,7 @@ export const MsgItem: React.FC<MsgItemProps> = ({ aiRes, msg, senderInfo, receiv
                                 <NameCardMsg msg={msg.content.msg} isSender={msg.is_sender} />
                             )}
                             {msg.type_name === "AiRes" && (
-                                <AiResMsg currentUserName={senderInfo ? senderInfo.nickname : ''} msg={msg.content.aiRes ? msg.content.aiRes : ""} prompt={msg.content.promote ? msg.content.promote : " "} />
+                                <AiResMsg currentUserName={senderInfo ? senderInfo.nickname : ''} aiRes={aiRes} msg={msg.content.aiRes ? msg.content.aiRes.toString() : ""} prompt={msg.content.promote ? msg.content.promote : " "} />
                             )}
                             {
                                 msg.type_name !== "AiRes" && (

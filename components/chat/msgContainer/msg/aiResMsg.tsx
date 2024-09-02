@@ -6,6 +6,7 @@ interface MsgItemProps {
     msg: string;
     currentUserName: string;
     prompt: string;
+    aiRes?: string[]
 }
 
 type MsgItem = {
@@ -17,6 +18,7 @@ export const AiResMsg: React.FC<MsgItemProps> = ({
     msg,
     currentUserName,
     prompt,
+    aiRes
 }) => {
     const [copied, setCopied] = useState(false);
     const [addLabel, setAddLabel] = useState(false);
@@ -79,19 +81,20 @@ export const AiResMsg: React.FC<MsgItemProps> = ({
                 </div>
                 {copied && <div className="text-sm">✅ 已复制</div>}
             </div>
-            <div className="flex flex-col gap-2 ">
-                {msgList.map((content, index) => (
+
+            <div className="flex flex-col gap-2">
+                {aiRes && aiRes.map((content, index) => (
                     <div
                         key={index}
                         className="mt-2"
-                        onClick={() => copyToClipboard(renderMsgWithLabel(content.msg))}
+                        onClick={() => copyToClipboard(renderMsgWithLabel(content))}
                     >
-                        <div className="text font-semibold">{content.userName}: </div>
-                        <div className="p-2 shadow-md rounded-lg bg-zinc-50/30 dark:bg-zinc-600/30 dark:hover:bg-blue-600/30 hover:bg-blue-300/30 transition-all cursor-pointer">
-                            {renderMsgWithLabel(content.msg)}
+                        <div className="p-4 shadow-md rounded-lg bg-zinc-50/30 dark:bg-zinc-600/30 dark:hover:bg-blue-600/30 hover:bg-blue-300/30 transition-all cursor-pointer">
+                            {renderMsgWithLabel(content)}
                         </div>
                     </div>
                 ))}
+
             </div>
             <div className="mt-4">
                 <Checkbox
@@ -104,18 +107,9 @@ export const AiResMsg: React.FC<MsgItemProps> = ({
             </div>
 
             <Accordion isCompact>
-                <AccordionItem key="1" aria-label="原始数据" title="原始数据">
-                    <div>
-                        Prompt:
-                        <div className="p-2 shadow-md rounded-lg bg-zinc-50/30 dark:bg-zinc-600/30  transition-all">
-                            {JSON.stringify(prompt)}
-                        </div>
-                    </div>
-                    <div className="mt-2">
-                        AI返回:
-                        <div className="p-2 shadow-md rounded-lg bg-zinc-50/30 dark:bg-zinc-600/30  transition-all ">
-                            {JSON.stringify(msg)}
-                        </div>
+                <AccordionItem key="1" aria-label="Prompt:" title="Prompt:">
+                    <div className="p-2 shadow-md rounded-lg bg-zinc-50/30 dark:bg-zinc-600/30  transition-all">
+                        {JSON.stringify(prompt)}
                     </div>
                 </AccordionItem>
             </Accordion>

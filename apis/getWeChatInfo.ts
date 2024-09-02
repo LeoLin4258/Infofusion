@@ -27,15 +27,7 @@ interface AccountInfoResult {
 
 async function getWeChatInfo(): Promise<AccountInfoResult> {
     try {
-        const response: AxiosResponse<WxInfoResponse> = await axios.get(`${ApiController().apiUrl}/wxinfo`,
-            {
-                headers: {
-                    'token': ApiController().token,
-                    'Content-Security-Policy': 'upgrade-insecure-requests',
-                    "Access-Control-Allow-Origin" : "*",
-                },
-            }
-        );
+        const response: AxiosResponse<WxInfoResponse> = await axios.post(`${ApiController().apiUrl}/wxinfo`);
         const result: AccountInfoResult = {
             statusCode: response.status,
             data: [],

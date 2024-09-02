@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { NoneMsgHint } from "./noneMsgHint";
 import getMsg from "@/apis/getMsg";
 import { MsgItem } from "./msgItem";
-import { Button, Input, Pagination, Progress, Tooltip } from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger, Input, Pagination, Progress, Tooltip } from "@nextui-org/react";
 import moment from "moment";
 import { MsgBanner } from "./msgBanner";
 import getMsgChatCount from '@/apis/getMsgChatCount';
@@ -15,6 +15,7 @@ import newMsgStream from "@/apis/newMsgStream";
 import Snackbar from "@mui/material/Snackbar";
 import localRes from "@/apis/localRes";
 import { useMyContext } from "@/components/context/myContext";
+import type { Selection } from "@nextui-org/react";
 
 interface MsgContainerProps {
     contact: Contact;
@@ -26,7 +27,7 @@ type Message = {
     content: {
         msg: string;
         src: string;
-        aiRes?: string;
+        aiRes?: string[];
         promote?: string;
     };
     id: number;
@@ -51,12 +52,13 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
     const [pageSize, setPageSize] = useState(50);
 
     const [isGettingAiRes, setIsGettingAiRes] = useState<boolean>(false);
-    const [aiRes, setAiRes] = useState<string>('');
+    const [aiRes, setAiRes] = useState<string[]>([]);
 
     const [open, setOpen] = useState(false);
 
     const { runnerApiUrl } = useMyContext();
 
+    const [batchCount, setBatchCount] = useState("1");
 
     const isMoreThanAnHourApart = (date1: string, date2: string) => {
         const momentDate1 = moment(date1, "YYYY-MM-DD HH:mm:ss");
@@ -145,7 +147,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
         let prompt = `以下是一段对话：`
         msgList.forEach((msg: Message) => {
             if (msg.content.msg && msg.content.msg !== '' && msg.type_name === '文本') {
-                const cleanedMsg = msg.content.msg.replace(/\n+/g, '\n'); 
+                const cleanedMsg = msg.content.msg.replace(/\n+/g, '\n');
                 if (msg.talker === '我') {
                     prompt += '\n\n' + senderInfo?.nickname + ': ' + cleanedMsg
                 } else if (userInfo) {
@@ -164,17 +166,18 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
             "prompt": prompt,
             "stream": false,
             "temperature": 1,
-            "top_p": 0.3
+            "top_p": 0.3,
+            "stop": ["\n\n","✨AI生成"]
         }
-        const res = await localRes({ prompt: prama, runnerUrl: runnerApiUrl });
-        if (res.statusCode === 200 && res.msgs) {
+        const res = await localRes({ prompt: prama, runnerUrl: runnerApiUrl, batchCount: batchCount });
+        if (res) {
             const newMsgList = [...msgList];
             newMsgList.push({
                 CreateTime: moment().format('YYYY-MM-DD HH:mm:ss'),
                 MsgSvrID: '0',
                 content: {
                     msg: '',
-                    aiRes: res.msgs,
+                    aiRes: res,
                     src: '',
                     promote: prompt
                 },
@@ -185,7 +188,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
                 type_name: 'AiRes'
             });
             setMsgList(newMsgList);
-            setAiRes(res.msgs);
+            setAiRes(res);
         } else {
             setOpen(true);
         }
@@ -212,6 +215,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
 
         setOpen(false);
     };
+
 
     const renderMessages = () => {
         const messageElements: React.ReactNode[] = [];
@@ -254,7 +258,29 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
                             <div className="flex-grow flex justify-center">
                                 <Pagination total={totalPages} page={currentPage} onChange={(page) => handleChangePage(page)} />
                             </div>
-
+                            <Dropdown>
+                                <DropdownTrigger>
+                                    <Button isIconOnly variant="flat" size="sm" className="mr-2">
+                                        {batchCount}
+                                    </Button>
+                                </DropdownTrigger>
+                                <DropdownMenu
+                                    aria-label="AI生成次数"
+                                    variant="flat"
+                                    disallowEmptySelection
+                                    selectionMode="single"
+                                    selectedKeys={batchCount}
+                                    onAction={(key) => setBatchCount(key.toString())}
+                                >
+                                    <DropdownSection title="AI生成次数">
+                                        <DropdownItem key="1">1</DropdownItem>
+                                        <DropdownItem key="2">2</DropdownItem>
+                                        <DropdownItem key="3">3</DropdownItem>
+                                        <DropdownItem key="4">4</DropdownItem>
+                                        <DropdownItem key="5">5</DropdownItem>
+                                    </DropdownSection>
+                                </DropdownMenu>
+                            </Dropdown>
                             <div>
                                 {isGettingAiRes ? (
                                     <Tooltip content="正在AI续写..." >
