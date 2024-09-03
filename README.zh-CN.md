@@ -32,6 +32,7 @@ InfoFusion 采用以下技术构建：
 - **[NextJS and NextUI Dashboard Template Starter](https://github.com/Siumauricio/nextui-dashboard-template?tab=readme-ov-file#nextjs-and-nextui-dashboard-template-starter)**：一个结合了 Next.js 和 NextUI 功能的强大仪表盘模板起始包。
 
 ## 快速开始
+> 你可以前往 [详细教程](./README.zh-CN.tutorial.md) 查看更详细的步骤.
 
 在开始之前，请确保 `RWKV-Runner` 和 `PyWxDump` 已经正确安装并在本地机器上运行。
 
