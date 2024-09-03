@@ -31,6 +31,7 @@ InfoFusion is powered by the following technologies:
 - **[NextJS and NextUI Dashboard Template Starter](https://github.com/Siumauricio/nextui-dashboard-template?tab=readme-ov-file#nextjs-and-nextui-dashboard-template-starter)**: A starter template that combines the power of Next.js and NextUI for a robust dashboard setup.
 
 ## Getting Started
+> You can visit the [Detailed Tutorial](./README.tutorial.md) for more comprehensive steps.
 
 Before starting, please ensure that `RWKV-Runner` and `PyWxDump` are correctly installed and running on your local machine.
 
