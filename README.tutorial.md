@@ -120,7 +120,9 @@ If you see `✅Runner API connected` pop up in the upper right corner, it means 
 
 > If you have not installed PyWxDump yet, you can refer to the [PyWxDump GitHub repository](https://github.com/xaoyaoo/PyWxDump/blob/master/doc/UserGuide.md) for installation instructions.
 
-  
+> [!WARNING]  
+> For the current version, please use the rwkvchat package in [release](https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0) instead of PyWxDump.
+
 
 ### 1. Launch PyWxDump
 
