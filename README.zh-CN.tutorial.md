@@ -73,6 +73,9 @@ npm run dev
 # 安装和连接PyWxDump
 > 如果你还没有安装PyWxDump，你可以前往[PyWxDump的Github仓库](https://github.com/xaoyaoo/PyWxDump/blob/master/doc/UserGuide.md)查看安装教程
 
+> [!WARNING]  
+> 当前版本，请使用 [release](https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0)中的rwkvchat包 而不是 PyWxDump.
+
 ### 1. 启动PyWxDump
 双击启动`wxdump.exe`程序
 > `PyWxDump`会默认打开一个页面，你可以忽略它
