@@ -1,206 +1,136 @@
+# Launch InfoFusion Page
 
-# Launching the InfoFusion Page
+> [!TIP]
+> You can use the `deployed InfoFusion` and skip the `local InfoFusion setup` steps.
 
-## Using the Online Page
+## Using the Deployed InfoFusion
 
 You can use our deployed [InfoFusion](https://rwkv-infofusion.vercel.app/) page.
 
-This online deployment does not collect or upload any data. You can view the source code in the [GitHub repository](https://github.com/LeoLin4258/Infofusion).
+This online deployment does not collect or upload any data. You can view the source code on the [GitHub repository](https://github.com/LeoLin4258/Infofusion).
 
-If you still have concerns, you can follow the steps below to launch the InfoFusion page locally.
+**If you still have concerns, you can follow the steps below to launch the InfoFusion page locally.**
 
-  
+## Using Local InfoFusion
+> [!TIP]
+> If you have front-end development experience, you can directly clone this repository and use npm to start the project.
+> The project uses `Next.js 14`, `Node 20`, and `npm`.
 
-## Launching InfoFusion Locally
-
-> If you have experience in front-end development, you can directly clone this repository and use npm to start the project.
-> This project uses `Next.js 14`, `Node 20`, `npm`.
-
-  
-
-#### 1. Clone the Project
-
+### 1. Clone the Repository
 Open `cmd` or `terminal` and enter:
 
 ```bash
-git  clone  https://github.com/LeoLin4258/Infofusion
+git clone https://github.com/LeoLin4258/Infofusion
 ```
 
-After the clone is complete, navigate to the InfoFusion folder:
+Once cloning is complete, navigate into the InfoFusion folder:
 
 ```bash
-cd  InfoFusion
+cd Infofusion
 ```
 
-#### 2. Install Node.js
-
-Check if you have Node.js installed:
+### 2. Install Node Environment
+Check if you have Node installed:
 
 ```bash
-node  -v
+node -v
 ```
+- If it shows `v xx.xx.x`, you can proceed to the next step.
+- If it prompts that Node is not installed, you can download and install it from the [Node.js website](https://nodejs.org/en).
 
-- If it displays `v xx.xx.x`, you can proceed to the next step.
-
-- If it prompts you that Node.js is not installed, you can go to the [Node.js official website](https://nodejs.org/en) to install it.
-
-  
-
-### 3. Install Necessary Dependencies
-
+### 3. Install Required Dependencies
 ```bash
-npm  i
+npm i
 ```
 
 ### 4. Start the Project
-
-Start InfoFusion locally:
+To launch InfoFusion locally, run:
 
 ```bash
-npm  run  dev
+npm run dev
 ```
 
-If you see the following output, it means the project has started successfully:
+If you see the following output, the project has started successfully:
 
 ```bash
 > dashboard@0.1.0 dev
 > next dev
 
-▲  Next.js  14.0.4
--  Local:  http://localhost:3000
--  Environments:  .env
+   ▲ Next.js 14.0.4
+   - Local:        http://localhost:3000
+   - Environments: .env
 
-✓  Ready  in  1900ms
+ ✓ Ready in 1900ms
 ```
 
-Now you can go to `http://localhost:3000` in your browser to access InfoFusion.
+Now, you can access InfoFusion by entering `http://localhost:3000` in your browser.  
+> On the first page load, it might take a little time. This delay will only occur the first time after starting the project.
 
-> The first time you visit the page after starting, it may take a moment to load. This only happens on the first visit after startup.
-
-  
-
-# Installing and Connecting RWKV Runner
-
-> Before continuing this step, please ensure you have installed and are running RWKV Runner.
+# Install and Connect RWKV Runner
+> [!NOTE]
+> Before proceeding with this step, make sure you have installed and started RWKV Runner.
+>
+> You can follow the guide in the [RWKV Runner Documentation](https://rwkv.cn/RWKV-Runner/Introduction).
 
 ### 1. Check/Configure RWKV Runner API Port
-
 In the RWKV-Runner application, click the `Settings` button on the left to go to the configuration page.
 
-  
+Copy the port number next to `API Port`.  
+> The default port is usually `8000`.
 
-Copy the port number next to `API Port`.
+### 2. Set InfoFusion API Port
+Go to the InfoFusion page and click the `Settings` button on the left side of the page.
 
-> It is usually `8000` by default.
-
-  
-
-### 2. Set the InfoFusion API Port
-
-Go to the InfoFusion page and click the `Settings` button on the left.
-
-  
-
-In the `Runner Port` input field, enter the RWKV Runner API port number you just copied.
-
-> The format is `http://127.0.0.1:8000`.
-> Replace `8000` with the API port number you just copied.
-
-  
+In the input field labeled `Runner Port`, enter the RWKV Runner API port number you just copied.  
+> The format should be `http://127.0.0.1:8000`, where `8000` is replaced with your copied API port number.
 
 Click the `Update/Test` button.
 
-  
+If a notification appears in the top right saying `✅Runner API connected`, InfoFusion has successfully connected to your RWKV Runner.
 
-If you see `✅Runner API connected` pop up in the upper right corner, it means InfoFusion has successfully connected to your RWKV Runner.
-
-  
-
-# Installing and Connecting PyWxDump
-
-> If you have not installed PyWxDump yet, you can refer to the [PyWxDump GitHub repository](https://github.com/xaoyaoo/PyWxDump/blob/master/doc/UserGuide.md) for installation instructions.
-
-> [!WARNING]  
-> For the current version, please use the rwkvchat package in [release](https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0) instead of PyWxDump.
-
+# Install and Connect PyWxDump
+> [!WARNING]
+> For the current version, please use `rwkvchat` from the [release](https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0) instead of PyWxDump.
+> 
+> Download and double-click to run `rwkvchat`.
 
 ### 1. Launch PyWxDump
-
-Double-click to launch the `wxdump.exe` program.
-
->  `PyWxDump` will open a page by default, which you can ignore.
-
-  
+Double-click to run the `rwkvchat.exe` program.
 
 ### 2. Load Your WeChat Data
+Go to the InfoFusion page and click the `Settings` button on the left side of the page.
 
-Go to the InfoFusion page and click the `Settings` button on the left.
+Click the `Retry` button in the `WeChat Account` section.
 
-  
-
-Click the `Retry` button in the `WeChat Account` card.
-
-  
-
-After initializing and loading your WeChat data, you can go to the `Chat` page to start using it.
-
-  
+After initializing and loading your WeChat data, you can go to the `Chat Page` to start using InfoFusion.
 
 # Using InfoFusion
+Once you've completed the steps above, you're ready to start using InfoFusion.
 
-After completing the above steps, you can start using InfoFusion.
-
-  
-
-### Generating AI Replies
-
+### Generate AI Responses
 1. Go to the InfoFusion page.
-
 2. Click the `Chat` button on the left.
-
 3. Select a chat room.
+4. Click the number button to the left of the `✨` button in the bottom right corner to choose how many responses you'd like to generate at once.
+   > The more responses you choose, the longer it will take to generate them.
+   > It's recommended to choose 3 or fewer.
+5. Click the `✨` button in the bottom right corner to start generating responses.
+6. Once the responses are generated, click on the one you think is suitable.
+   > The content will be copied to your clipboard, and you can manually paste it into the WeChat app.
 
-4. Click the number button to the left of the `✨` button at the bottom right, and choose how many replies you want to generate at once.
+### Add the `✨AI Generated` Tag
+Automatically add the `✨AI Generated` tag when copying responses:
+1. After generating AI responses, click the `[] Add AI Generated tag` button at the bottom left of the response card.
+2. When you click copy, the `✨AI Generated` tag will be added to the end of the content.
 
-> The more replies, the longer it will take to generate.
-> It is recommended to choose no more than 3.
+### Export Chat Data as JSONL
+> This feature is currently unavailable and will be enabled in the next update.
 
-5. Click the `✨` button at the bottom right to start generating replies.
-
-6. After the replies are generated, you can click on the one you find suitable in the card.
-
-> The content will be copied to your clipboard, and you can manually paste it into your WeChat application.
-
-  
-
-### Adding the `✨AI Generated` Tag
-
-Automatically add the `✨AI Generated` tag when copying.
-
-1. After the AI reply is generated, you can click the `[] Add AI Generated Tag` button at the bottom left of the card.
-
-2. When you click to copy, the `✨AI Generated` tag will be added to the end of the content.
-
-  
-
-### Exporting Chat Data in jsonl Format
-
-> This feature is currently unavailable and will be released in the next update.
-
-  
-
-Export chat data with a specific friend in jsonl format.
-
+Export chat data with a friend in JSONL format:
 1. Go to the InfoFusion page.
-
 2. Click the `Chat` button on the left.
-
 3. Select a chat room.
-
-4. Click the menu button at the top right.
-
+4. Click the menu button in the top right corner.
 5. Click `Export Chat Data`.
-
-6. Wait for your file to be processed.
-
-7. When the file is ready, click the `Download` button, and the jsonl file will start downloading in your browser.
+6. Wait for your file to process.
+7. Once the file is ready, click the `Download` button, and the JSONL file will begin downloading in your browser.

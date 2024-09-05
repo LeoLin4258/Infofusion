@@ -256,8 +256,8 @@ export const Settings = () => {
     return (
         <>
             <div
-                className="w-full flex flex-col items-center justify-center gap-10"
-                style={{ height: "calc(100vh - 65px)" }}
+                className="w-full min-h-[90vh] flex flex-col items-center justify-center gap-10"
+              
             >
                 <div className="flex flex-col justify-center items-center gap-4">
                     <div className="text-2xl font-semibold">设置RWKV Runner 端口🌐</div>

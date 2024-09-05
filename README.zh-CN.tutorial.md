@@ -1,20 +1,27 @@
 # 启动InfoFusion页面
+> [!TIP]
+> 你可以使用`使用部署好的InfoFusion`,并且跳过`使用本地InfoFusion`步骤
 
-## 使用线上页面
+## 使用部署好的InfoFusion
 
 你可以使用我们部署好的[InfoFusion](https://rwkv-infofusion.vercel.app/)页面
-该线上部署的页面不会收集，上传任何数据。源代码可以在[Github 仓库](https://github.com/LeoLin4258/Infofusion)查看
-如果你依然有疑虑，可以跟随下方步骤，在本地启动InfoFusion页面
 
-## 本地启动InfoFusion
+该线上部署的页面不会收集，上传任何数据。源代码可以在[Github 仓库](https://github.com/LeoLin4258/Infofusion)查看
+
+**如果你依然有疑虑，可以跟随下方步骤，在本地启动InfoFusion页面**
+
+## 使用本地的InfoFusion
+> [!TIP]
 > 如果你有前端页面开发经验，你可以直接克隆本仓库，并且使用npm启动该项目
 > 项目使用`Next.js 14` `node 20` `npm`
 
 #### 1. 克隆项目
 打开`cmd`或者`terminal`并输入：
+
 ``` bash
 git clone https://github.com/LeoLin4258/Infofusion
 ```
+
 当克隆完成后，进入InfoFusion文件夹
 ``` bash
 cd InfoFusion
@@ -52,33 +59,36 @@ npm run dev
 
 
 # 安装和连接RWKV Runner
+> [!NOTE] 
 > 在继续这一步之前，请确保你已经安装和运行RWKV Runner
+>
+> 你可以在 [RWKV Runner文档](https://rwkv.cn/RWKV-Runner/Introduction)中查看教程 
+
 ### 1. 查看/配置RWKV Runner API 端口
  在RWKV-Runner应用中，点击左侧的`配置`按钮，前往配置页面
  
  复制`API 端口` 右侧的端口号
-> 一般默认为8000
+> 一般默认为`8000`
 
 ### 2. 设置InfoFusion API 端口
 前往InfoFusion页面，并点击页面左侧的`设置`按钮
 
 在`Runner端口`的输入框中，填写你刚刚复制的RWKV Runner API端口号
 > 格式为`http://127.0.0.1:8000`
->其中8000替换为你刚刚复制的API端口号
+> 其中8000替换为你刚刚复制的API端口号
 
 点击`更新/测试`按钮
 
 如果有右上角弹出`✅Runner API connected`,则证明InfoFusion已经连接至你的RWKV Runner
 
 # 安装和连接PyWxDump
-> 如果你还没有安装PyWxDump，你可以前往[PyWxDump的Github仓库](https://github.com/xaoyaoo/PyWxDump/blob/master/doc/UserGuide.md)查看安装教程
-
 > [!WARNING]  
-> 当前版本，请使用 [release](https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0)中的rwkvchat包 而不是 PyWxDump.
+> 当前版本，请使用 [release](https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0)中的rwkvchat 而不是 PyWxDump.
+> 
+> 下载并双击启动`rwkvchat`
 
 ### 1. 启动PyWxDump
-双击启动`wxdump.exe`程序
-> `PyWxDump`会默认打开一个页面，你可以忽略它
+双击启动`rwkvchat.exe`程序
 
 ### 2. 加载你的微信数据
 前往InfoFusion页面，并点击页面左侧的`设置`按钮
