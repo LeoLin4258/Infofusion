@@ -4,7 +4,7 @@
 
 ## 使用部署好的InfoFusion
 
-你可以使用我们部署好的[InfoFusion](https://rwkv-infofusion.vercel.app/)页面
+你可以使用我们部署好的[InfoFusion](https://infofusion.vercel.app/)页面
 
 该线上部署的页面不会收集，上传任何数据。源代码可以在[Github 仓库](https://github.com/LeoLin4258/Infofusion)查看
 

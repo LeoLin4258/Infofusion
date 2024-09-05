@@ -5,7 +5,7 @@
 
 ## Using the Deployed InfoFusion
 
-You can use our deployed [InfoFusion](https://rwkv-infofusion.vercel.app/) page.
+You can use our deployed [InfoFusion](https://infofusion.vercel.app/) page.
 
 This online deployment does not collect or upload any data. You can view the source code on the [GitHub repository](https://github.com/LeoLin4258/Infofusion).
 
