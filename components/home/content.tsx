@@ -61,7 +61,7 @@ export const Content = () => {
                 <StepLabel ><p className="t text-black dark:text-white">打开并登录微信</p></StepLabel>
               </Step>
               <Step key={"2"}>
-                <StepLabel ><p className="t text-black dark:text-white">启动PyWxDump<br></br><Link isExternal showAnchorIcon href="https://github.com/xaoyaoo/PyWxDump">下载地址</Link></p></StepLabel>
+                <StepLabel ><p className="t text-black dark:text-white">启动PyWxDump<br></br><Link isExternal showAnchorIcon href="https://github.com/LeoLin4258/Infofusion/releases/tag/v1.0.0">下载地址</Link></p></StepLabel>
               </Step>
               <Step key={"3"}>
                 <StepLabel ><p className="t text-black dark:text-white">启动RWKV Runner续写 <br></br><Link isExternal showAnchorIcon href="https://rwkv.cn/RWKV-Runner/Introduction">Runner教程</Link></p></StepLabel>
