@@ -1,3 +1,4 @@
+'use client'
 import type { NextPage } from "next";
 import { Content } from "@/components/home/content";
 

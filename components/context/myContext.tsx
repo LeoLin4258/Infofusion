@@ -21,16 +21,23 @@ interface MyProviderProps {
 
 export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
     const [runnerApiUrl, setRunnerApiUrl] = useState<string>(() => {
-        return localStorage.getItem('runnerApiUrl') || 'http://127.0.0.1:8000';
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('runnerApiUrl') || 'http://127.0.0.1:8000';
+        }
+        return 'http://127.0.0.1:8000';
     });
 
     useEffect(() => {
-        localStorage.setItem('runnerApiUrl', runnerApiUrl);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('runnerApiUrl', runnerApiUrl);
+        }
     }, [runnerApiUrl]);
 
     const setRunnerApiUrlAndStore = (value: string) => {
         setRunnerApiUrl(value);
-        localStorage.setItem('runnerApiUrl', value);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('runnerApiUrl', value);
+        }
     };
 
     return (
