@@ -8,7 +8,7 @@
 
 > 该线上部署的页面不会收集，上传任何数据。源代码可以在[Github 仓库](https://github.com/LeoLin4258/Infofusion)查看
 
-下一步，请前往 [安装和连接RWKV Runner](#安装和连接RWKV-Runner)
+下一步，请前往 [安装和连接RWKV Runner](#安装和连接RWKVRunner)
 
 ## 使用本地的InfoFusion
 > [!TIP]
@@ -58,7 +58,7 @@ npm run dev
 >在第一次访问页面时，可能需要加载一段时间，这只会在启动后第一次访问时出现
 
 
-# 安装和连接RWKV-Runner
+# 安装和连接RWKV Runner
 > [!NOTE] 
 > 在继续这一步之前，请确保你已经安装和运行RWKV Runner
 >

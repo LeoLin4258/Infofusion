@@ -257,12 +257,20 @@ export const Settings = () => {
         <>
             <div
                 className="w-full min-h-[90vh] flex flex-col items-center justify-center gap-10"
-              
+
             >
                 <div className="flex flex-col justify-center items-center gap-4">
                     <div className="text-2xl font-semibold">设置RWKV Runner 端口🌐</div>
                     <div className="text-sm font-thin">
                         确保在这里正确填写你的Runner端口
+                    </div>
+                    <div className="p-2 flex gap-2 dark:bg-blue-700/40 bg-blue-400/40 rounded-lg">
+                        <div className="flex items-center justify-center">💡</div>
+                        <div className="text-sm">
+                            <div>如果你使用的是AI00, 请在URL尾部添加 /api/oai</div>
+                            <div>例如：http://localhost:65530/api/oai</div>
+                        </div>
+
                     </div>
                     <div className="bg-white border border-zinc-200 dark:border-none shadow-xl dark:bg-zinc-800 p-4 rounded-lg gap-4 w-[400px]  flex">
                         <div className="flex flex-1 flex-col">

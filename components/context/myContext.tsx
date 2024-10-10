@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface MyContextType {
     runnerApiUrl: string;
@@ -20,10 +20,21 @@ interface MyProviderProps {
 }
 
 export const MyProvider: React.FC<MyProviderProps> = ({ children }) => {
-    const [runnerApiUrl, setRunnerApiUrl] = useState<string>('http://127.0.0.1:8000');
+    const [runnerApiUrl, setRunnerApiUrl] = useState<string>(() => {
+        return localStorage.getItem('runnerApiUrl') || 'http://127.0.0.1:8000';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('runnerApiUrl', runnerApiUrl);
+    }, [runnerApiUrl]);
+
+    const setRunnerApiUrlAndStore = (value: string) => {
+        setRunnerApiUrl(value);
+        localStorage.setItem('runnerApiUrl', value);
+    };
 
     return (
-        <MyContext.Provider value={{ runnerApiUrl, setRunnerApiUrl }}>
+        <MyContext.Provider value={{ runnerApiUrl, setRunnerApiUrl: setRunnerApiUrlAndStore }}>
             {children}
         </MyContext.Provider>
     );
