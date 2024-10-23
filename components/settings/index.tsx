@@ -267,8 +267,8 @@ export const Settings = () => {
                     <div className="p-2 flex gap-2 dark:bg-blue-700/40 bg-blue-400/40 rounded-lg">
                         <div className="flex items-center justify-center">💡</div>
                         <div className="text-sm">
-                            <div>如果你使用的是AI00, 请在URL尾部添加 /api/oai</div>
-                            <div>例如：http://localhost:65530/api/oai</div>
+                            <div>如果你使用的是AI00, 请在URL尾部添加 /api/oai/</div>
+                            <div>例如：https://localhost:65530/api/oai/</div>
                         </div>
 
                     </div>
