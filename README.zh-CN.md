@@ -33,6 +33,10 @@ InfoFusion 采用以下技术构建：
 
 ## 快速开始
 
+如果你是新手，建议使用 [快速开始文档](https://github.com/LeoLin4258/Infofusion/blob/main/README.simple.start.md)！
+
+
+
 > [!TIP] 
 > 你可以前往 [详细教程](./README.zh-CN.tutorial.md) 查看更详细的步骤.
 
