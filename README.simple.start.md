@@ -16,7 +16,7 @@
   1.2.下载完成后，双击打开`infofusion-wechat-server.exe`
 
 
-> [!NOTE]
+> [!TIP]
 > 你可能会在终端中看到`FileNotFoundError: 合并失败`的提示，你可以忽略并继续
 
 ### 2.启动RWKV Runner 或者 AI00
@@ -36,7 +36,7 @@
 
    2.2. 复制并前往在终端中出现的 `WebUI`地址，一般默认为`http://localhost:65530/`
 
-   2.3 验证你的AI00是否可以正常运行。你可以AI00提供的webui中尝试与ai对话，验证是否可以正常生成回复，如果可以，请前往下一步
+   2.3 验证你的AI00是否可以正常运行。你可以前往AI00提供的webui中尝试与ai对话，验证是否可以正常生成回复，如果可以，请前往下一步
 
    2.4  复制或记住在步骤2.2的`webUI`地址，一般为`http://localhost:65530/`
 
@@ -46,8 +46,8 @@
    3.1 用浏览器打开 `https://infofusion.vercel.app/settings`
 
    3.2 在`Runner端口`的输入框中输入你在上一步复制的端口地址
-    RWKV Runner的地址一般为`http://localhost:8000/`
-    AI00的地址一般为`http://localhost:65530/api/oai/` 
+   - RWKV Runner的地址一般为`http://localhost:8000/`
+   - AI00的地址一般为`http://localhost:65530/api/oai/` 
 
    3.3 点击`更新/测试`按钮, 并且确认看到`✅Runner API connected`的提示
 
