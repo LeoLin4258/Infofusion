@@ -41,18 +41,17 @@ npm i
 ### 4. 启动项目
 在本地启动InfoFusion
 ``` bash
-npm run dev
+npm run preview
 ```
 如果你看到以下输出，则证明项目已经启动
 ``` bash
 > dashboard@0.1.0 dev
 > next dev
 
-   ▲ Next.js 14.0.4
-   - Local:        http://localhost:3000
-   - Environments: .env
+  ▲ Next.js 14.0.4
+  - Local:        http://localhost:3000
 
- ✓ Ready in 1900ms
+✓ Ready in 601ms
  ```
 现在你可以在浏览器中输入`http://localhost:3000`，前往InfoFusion
 >在第一次访问页面时，可能需要加载一段时间，这只会在启动后第一次访问时出现

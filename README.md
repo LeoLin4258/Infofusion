@@ -70,7 +70,7 @@ Before starting, please ensure that `RWKV-Runner` and `PyWxDump` are correctly i
    Run the development server:
 
    ```bash
-   npm run dev
+   npm run preview
    ```
 
    Open your browser and navigate to `http://localhost:3000` to access InfoFusion.

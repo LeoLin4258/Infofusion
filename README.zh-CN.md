@@ -72,7 +72,13 @@ InfoFusion 采用以下技术构建：
 
 3. **本地启动应用**
 
-   启动开发服务器：
+   启动预览
+
+   ```bash
+   npm run preview
+   ```
+
+   或者启动开发模式：
 
    ```bash
    npm run dev

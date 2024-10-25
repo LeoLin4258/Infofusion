@@ -44,7 +44,14 @@ npm i
 ```
 
 ### 4. Start the Project
+
 To launch InfoFusion locally, run:
+
+```bash
+npm run preview
+```
+
+Or to launch InfoFusion locally, run:
 
 ```bash
 npm run dev
