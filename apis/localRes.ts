@@ -3,8 +3,8 @@ import ApiController from './apiController';
 
 type getAiResParams = {
     prompt: {};
-    runnerUrl: string; 
-    batchCount:string
+    runnerUrl: string;
+    batchCount: string
 };
 
 interface MsgResponse {
@@ -12,7 +12,7 @@ interface MsgResponse {
     body: any;
     data: {
         body: {
-            msgs: string; 
+            msgs: string;
         };
         code: number;
     };
@@ -21,16 +21,16 @@ interface MsgResponse {
 
 interface MsgCountResult {
     statusCode: number;
-    msgs: string; 
+    msgs: string;
 }
 
 async function localRes(params: getAiResParams): Promise<string[]> {
-    const { prompt, runnerUrl,batchCount } = params; 
+    const { prompt, runnerUrl, batchCount } = params;
     const aiResList: string[] = []; // 用于存储每次请求的结果
 
     for (let i = 0; i < parseInt(batchCount); i++) {
         try {
-            const response: AxiosResponse<MsgResponse> = await axios.post(`${runnerUrl}/completions`, prompt, {
+            const response: AxiosResponse<MsgResponse> = await axios.post(`${runnerUrl}completions`, prompt, {
                 headers: {
                     'token': ApiController().token,
                 },
@@ -42,7 +42,7 @@ async function localRes(params: getAiResParams): Promise<string[]> {
             }
 
             aiResList.push(
-                 response.data.choices[0].text || '',
+                response.data.choices[0].text || '',
             );
         } catch (error) {
             console.error(`Error fetching message data on attempt ${i + 1}:`, error);

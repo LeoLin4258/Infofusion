@@ -16,6 +16,7 @@ import Snackbar from "@mui/material/Snackbar";
 import localRes from "@/apis/localRes";
 import { useMyContext } from "@/components/context/myContext";
 import type { Selection } from "@nextui-org/react";
+import getAiSummary from "@/apis/getAiSummary";
 
 interface MsgContainerProps {
     contact: Contact;
@@ -167,7 +168,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
             "stream": false,
             "temperature": 1,
             "top_p": 0.3,
-            "stop": ["\n\n","✨AI生成"]
+            "stop": ["\n\n", "✨AI生成"]
         }
         const res = await localRes({ prompt: prama, runnerUrl: runnerApiUrl, batchCount: batchCount });
         if (res) {
@@ -181,7 +182,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
                     src: '',
                     promote: prompt
                 },
-                id: 0, 
+                id: 0,
                 is_sender: 1,
                 room_name: '',
                 talker: contact.wxid,
@@ -194,6 +195,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
         }
         setIsGettingAiRes(false);
     }
+
     useEffect(() => {
         if (aiRes) {
             setTimeout(() => {
@@ -228,6 +230,47 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
         return messageElements;
     };
 
+    const handleGetAiSummary = async () => {
+        setIsGettingAiRes(true);
+        let rawMessages = ''
+        msgList.forEach((msg: Message) => {
+            if (msg.type_name === "文本") {
+                const talkerInfo = userInfo ? userInfo[msg.talker] : undefined;
+                const talkerName = talkerInfo ? talkerInfo.nickname : msg.talker;
+                rawMessages += '\n\n' + talkerName + ': ' + msg.content.msg
+            }
+        });
+
+        console.log('rawMessages👇')
+        console.log(rawMessages)
+
+        const res = await getAiSummary({ messages: rawMessages, runnerUrl: runnerApiUrl });
+        console.log(111, res)
+        if (res) {
+            const newMsgList = [...msgList];
+            newMsgList.push({
+                CreateTime: moment().format('YYYY-MM-DD HH:mm:ss'),
+                MsgSvrID: '0',
+                content: {
+                    msg: JSON.stringify(res),
+                    src: '',
+                    aiRes: [],
+                    promote: rawMessages
+                },
+                id: 0,
+                is_sender: 1,
+                room_name: '',
+                talker: contact.wxid,
+                type_name: 'AiSummary'
+            })
+            setMsgList(newMsgList);
+            setTimeout(() => {
+                handleScrollToBottom();
+            }, 100);
+        }
+        setIsGettingAiRes(false);
+    }
+
     return (
         <>
             {contact ? (
@@ -255,42 +298,62 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
                                     <Button size="sm" isIconOnly onPress={() => handleScrollToTop()}>👆</Button>
                                 </Tooltip>
                             </div>
-                            <div className="flex-grow flex justify-center">
+                            <div className="flex-grow flex justify-center ">
                                 <Pagination total={totalPages} page={currentPage} onChange={(page) => handleChangePage(page)} />
                             </div>
-                            <Dropdown>
-                                <DropdownTrigger>
-                                    <Button isIconOnly variant="flat" size="sm" className="mr-2">
-                                        {batchCount}
-                                    </Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label="AI生成次数"
-                                    variant="flat"
-                                    disallowEmptySelection
-                                    selectionMode="single"
-                                    selectedKeys={batchCount}
-                                    onAction={(key) => setBatchCount(key.toString())}
-                                >
-                                    <DropdownSection title="AI生成次数">
-                                        <DropdownItem key="1">1</DropdownItem>
-                                        <DropdownItem key="2">2</DropdownItem>
-                                        <DropdownItem key="3">3</DropdownItem>
-                                        <DropdownItem key="4">4</DropdownItem>
-                                        <DropdownItem key="5">5</DropdownItem>
-                                    </DropdownSection>
-                                </DropdownMenu>
-                            </Dropdown>
-                            <div>
+
+                            {/* AI总结 */}
+                            <div className="flex  px-2 py-1 rounded-lg hover:dark:bg-zinc-900 transition-background duration-200">
                                 {isGettingAiRes ? (
-                                    <Tooltip content="正在AI续写..." >
-                                        <Button isIconOnly isLoading size="sm" color="primary"></Button>
+                                    <Tooltip content="正在AI总结..." >
+                                        <Button isLoading size="sm" color="success">总结中</Button>
                                     </Tooltip>
                                 ) : (
-                                    <Tooltip content="AI续写" >
-                                        <Button isIconOnly size="sm" color="primary" onPress={() => handleGetAiRes()}>✨</Button>
+                                    <Tooltip content="AI总结" >
+                                        <Button  size="sm" color="success" onPress={() => handleGetAiSummary()}>总结</Button>
                                     </Tooltip>
                                 )}
+                            </div>
+
+
+                            <div className="h-8 border-l dark:border-zinc-800"> </div>
+
+                            {/* AI续写 */}
+                            <div className="flex  px-2 py-1 rounded-lg hover:dark:bg-zinc-900 transition-background duration-200">
+                                <Dropdown>
+                                    <DropdownTrigger>
+                                        <Button isIconOnly variant="flat" size="sm" className="mr-2">
+                                            {batchCount}
+                                        </Button>
+                                    </DropdownTrigger>
+                                    <DropdownMenu
+                                        aria-label="AI生成次数"
+                                        variant="flat"
+                                        disallowEmptySelection
+                                        selectionMode="single"
+                                        selectedKeys={batchCount}
+                                        onAction={(key) => setBatchCount(key.toString())}
+                                    >
+                                        <DropdownSection title="AI生成次数">
+                                            <DropdownItem key="1">1</DropdownItem>
+                                            <DropdownItem key="2">2</DropdownItem>
+                                            <DropdownItem key="3">3</DropdownItem>
+                                            <DropdownItem key="4">4</DropdownItem>
+                                            <DropdownItem key="5">5</DropdownItem>
+                                        </DropdownSection>
+                                    </DropdownMenu>
+                                </Dropdown>
+                                <div>
+                                    {isGettingAiRes ? (
+                                        <Tooltip content="正在AI续写..." >
+                                            <Button isIconOnly isLoading size="sm" color="primary"></Button>
+                                        </Tooltip>
+                                    ) : (
+                                        <Tooltip content="AI续写" >
+                                            <Button isIconOnly size="sm" color="primary" onPress={() => handleGetAiRes()}>✨</Button>
+                                        </Tooltip>
+                                    )}
+                                </div>
                             </div>
 
                         </div>

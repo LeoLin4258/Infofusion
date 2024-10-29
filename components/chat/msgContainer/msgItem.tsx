@@ -16,6 +16,7 @@ import { MiniProgramMsg } from "./msg/miniProgramMsg";
 import { VideoMsg } from "./msg/videoMsg";
 import { NameCardMsg } from "./msg/NameCardMsg";
 import { AiResMsg } from "./msg/aiResMsg";
+import { AiSummaryMsg } from "./msg/aiSummaryMsg";
 interface ApiResUserInfo {
     account: string;
     describe: string;
@@ -98,8 +99,11 @@ export const MsgItem: React.FC<MsgItemProps> = ({ aiRes, msg, senderInfo, receiv
                             {msg.type_name === "AiRes" && (
                                 <AiResMsg currentUserName={senderInfo ? senderInfo.nickname : ''} aiRes={aiRes} msg={msg.content.aiRes ? msg.content.aiRes.toString() : ""} prompt={msg.content.promote ? msg.content.promote : " "} />
                             )}
+                            {msg.type_name === "AiSummary" && (
+                                <AiSummaryMsg msg={msg.content.msg} prompt={msg.content.promote ? msg.content.promote : " "} />
+                            )}
                             {
-                                msg.type_name !== "AiRes" && (
+                                msg.type_name !== "AiRes" && msg.type_name !== "AiSummary" && (
                                     <Avatar src={senderInfo?.headImgUrl} className="flex-shrink-0" />
                                 )
                             }
