@@ -306,7 +306,7 @@ export const MsgContainer: React.FC<MsgContainerProps> = ({ contact }) => {
                             <div className="flex  px-2 py-1 rounded-lg hover:dark:bg-zinc-900 transition-background duration-200">
                                 {isGettingAiRes ? (
                                     <Tooltip content="正在AI总结..." >
-                                        <Button isLoading size="sm" color="success">总结中</Button>
+                                        <Button isIconOnly isLoading size="sm" color="success"></Button>
                                     </Tooltip>
                                 ) : (
                                     <Tooltip content="AI总结" >
